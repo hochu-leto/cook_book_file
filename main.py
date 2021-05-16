@@ -1,16 +1,21 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Денис Рудаков:
+# Как бы я сделал:
+# Заводим пустой словарь
+# Создаем список с названиями ключей для словарей типа : key_ = ['ingredient_name', 'quantity', 'measure']
+# Открываем файл
+# Далее в цикле проходим по строкам
+# Название блюда - первая строка
+# Счетчик вложенного цикла - вторая строка
+# Создаем пустой список
+# Создаем еще один цикл в котором проходим до range(пункт 6 счетчик)
+# Разделяем strip и split по знаку | строку
+# Делаем zip с листам из пункта 2
+# К пустому листу из пункта 7 += zip объект из пункта 10
+# Далее cook_book[Название блюда] = список из 11 пункта
+data = []
+key = ['ingredient_name', 'quantity', 'measure']
+with open('c_book.txt.txt') as f:
+    while True:
+        grade = f.readline().rstrip()
+        ratings = f.readline().rstrip()
+        f.readline()
