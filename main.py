@@ -24,7 +24,7 @@ with open('c_book.txt', 'r', encoding='utf-8') as f:
         ingredient_count = f.readline().rstrip()
         for i in range(int(ingredient_count)):
             ing = f.readline().rstrip()
-            ing_list = ing.split("|")
+            ing_list = ing.strip().split("|")
             ingredient = dict(zip(key, ing_list))
             ingredient['quantity'] = int(ingredient['quantity'])
             ingredients.append(ingredient)
@@ -49,5 +49,11 @@ def get_shop_list_by_dishes(dishes, person_count):
   'Чеснок': {'measure': 'зубч', 'quantity': 6}
 }
     """
-
-    pass
+    cook_dict = set()
+    for dish in dishes:
+        if dish in data:
+            for ingredient in data[dish]:
+                if ingredient in cook_dict:
+                    cook_dict[ingredient]['quantity'] += data[dish][ingredient]['quantity']
+                else
+                    pass
