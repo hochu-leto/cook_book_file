@@ -31,3 +31,23 @@ with open('c_book.txt', 'r', encoding='utf-8') as f:
         data[name] = ingredients
         f.readline().rstrip()
     print(data)
+
+
+def get_shop_list_by_dishes(dishes, person_count):
+    """
+
+    :param dishes: список блюд из cook_book
+    :param person_count: количество персон для кого мы будем готовить:
+    :return: словарь с названием ингредиентов и его количества для блюда.
+    типа
+{
+  'Картофель': {'measure': 'кг', 'quantity': 2},
+  'Молоко': {'measure': 'мл', 'quantity': 200},
+  'Помидор': {'measure': 'шт', 'quantity': 4},
+  'Сыр гауда': {'measure': 'г', 'quantity': 200},
+  'Яйцо': {'measure': 'шт', 'quantity': 4},
+  'Чеснок': {'measure': 'зубч', 'quantity': 6}
+}
+    """
+
+    pass
