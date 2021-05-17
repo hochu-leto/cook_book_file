@@ -32,6 +32,7 @@ with open('c_book.txt', 'r', encoding='utf-8') as f:
         f.readline().rstrip()
     print(data)
 
+print(get_shop_list_by_dishes({'Омлет'}, 4))
 
 def get_shop_list_by_dishes(dishes, person_count):
     """
@@ -49,11 +50,13 @@ def get_shop_list_by_dishes(dishes, person_count):
   'Чеснок': {'measure': 'зубч', 'quantity': 6}
 }
     """
-    cook_dict = set()
+    cook_dict = {}
     for dish in dishes:
         if dish in data:
             for ingredient in data[dish]:
                 if ingredient in cook_dict:
                     cook_dict[ingredient]['quantity'] += data[dish][ingredient]['quantity']
-                else
-                    pass
+                else:
+                    cook_dict[ingredient] = dict( 'measure' = data[dish][ingridient]['measure'], 'quantity' = data[dish][ingridient]['quantity'])
+                    print(cook_dict)
+    return cook_dict
