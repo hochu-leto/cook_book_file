@@ -12,10 +12,22 @@
 # Делаем zip с листам из пункта 2
 # К пустому листу из пункта 7 += zip объект из пункта 10
 # Далее cook_book[Название блюда] = список из 11 пункта
-data = []
+data = {}
 key = ['ingredient_name', 'quantity', 'measure']
-with open('c_book.txt.txt') as f:
+with open('c_book.txt', 'r', encoding='utf-8') as f:
     while True:
-        grade = f.readline().rstrip()
-        ratings = f.readline().rstrip()
-        f.readline()
+        # ingredients.clear()
+        ingredients = []
+        name = f.readline().rstrip()
+        if not name:
+            break
+        ingredient_count = f.readline().rstrip()
+        for i in range(int(ingredient_count)):
+            ing = f.readline().rstrip()
+            ing_list = ing.split("|")
+            ingredient = dict(zip(key, ing_list))
+            ingredient['quantity'] = int(ingredient['quantity'])
+            ingredients.append(ingredient)
+        data[name] = ingredients
+        f.readline().rstrip()
+    print(data)
