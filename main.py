@@ -16,7 +16,6 @@ data = {}
 key = ['ingredient_name', 'quantity', 'measure']
 with open('c_book.txt', 'r', encoding='utf-8') as f:
     while True:
-        # ingredients.clear()
         ingredients = []
         name = f.readline().rstrip()
         if not name:
@@ -32,11 +31,9 @@ with open('c_book.txt', 'r', encoding='utf-8') as f:
         f.readline().rstrip()
     print(data)
 
-print(get_shop_list_by_dishes({'Омлет'}, 4))
 
 def get_shop_list_by_dishes(dishes, person_count):
     """
-
     :param dishes: список блюд из cook_book
     :param person_count: количество персон для кого мы будем готовить:
     :return: словарь с названием ингредиентов и его количества для блюда.
@@ -53,10 +50,17 @@ def get_shop_list_by_dishes(dishes, person_count):
     cook_dict = {}
     for dish in dishes:
         if dish in data:
-            for ingredient in data[dish]:
-                if ingredient in cook_dict:
-                    cook_dict[ingredient]['quantity'] += data[dish][ingredient]['quantity']
+            for ingress_diets in data[dish]:
+                dict_ing = {}
+                if ingress_diets['ingredient_name'] in cook_dict:
+                    quantity = cook_dict[ingress_diets['ingredient_name']].get('quantity') + \
+                               ingress_diets['quantity'] * person_count
+                    cook_dict[ingress_diets['ingredient_name']].update(quantity=quantity)
                 else:
-                    cook_dict[ingredient] = dict( 'measure' = data[dish][ingridient]['measure'], 'quantity' = data[dish][ingridient]['quantity'])
-                    print(cook_dict)
+                    dict_ing['measure'] = ingress_diets['measure']
+                    dict_ing['quantity'] = ingress_diets['quantity'] * person_count
+                    cook_dict[ingress_diets['ingredient_name']] = dict_ing
     return cook_dict
+
+
+print(get_shop_list_by_dishes({'Омлет', 'Фахитос', 'Запеченный картофель'}, 4))
